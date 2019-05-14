@@ -61,17 +61,23 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           ]
       ),
 
-      bottomNavigationBar: new Material(
-        color: Theme.of(context).primaryColor,
-        child: new TabBar(
-          controller: controller,
-          tabs: <Tab>[
-            new Tab(text: "首页",icon: new Icon(Icons.home)),
-            new Tab(text: "分类",icon: new Icon(Icons.message)),
-            new Tab(text: "我的",icon: new Icon(Icons.cloud)),
-          ],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              //从左上角到右下角渐变
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFFFBB663), Color(0xFFFB6463)]),
         ),
-      ),
+        child : new TabBar(
+            controller: controller,
+            tabs: <Tab>[
+              new Tab(text: "首页",icon: new Icon(Icons.home)),
+              new Tab(text: "分类",icon: new Icon(Icons.message)),
+              new Tab(text: "我的",icon: new Icon(Icons.cloud)),
+            ],
+          ),
+        ),
     ) ;
   }
 }
