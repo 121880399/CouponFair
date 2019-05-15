@@ -25,6 +25,11 @@ dependencies:
   cupertino_icons: ^0.1.2
   url_launcher: ^4.0.1
   flutter_swiper : ^1.1.6
+  event_bus: ^1.1.0
+  dio: ^2.1.0
+  share: ^0.6.1+1
+  connectivity: ^0.4.3+1
+  shared_preferences: ^0.5.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
