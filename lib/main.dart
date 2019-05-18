@@ -1,4 +1,5 @@
 
+import 'package:coupon_fair/pages/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:coupon_fair/pages/home/home.dart';
 import 'package:coupon_fair/pages/category/category.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
             accentColor: Color(0xFFFBB663)
       ),
       home: MyHomePage(),
+      routes: <String,WidgetBuilder>{"login":(_)=>LoginPage()},
     );
   }
 }

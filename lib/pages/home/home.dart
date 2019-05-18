@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 class HomePage extends StatefulWidget {
+  static final String sName = "home";
+
   @override
   State<StatefulWidget> createState() {
     return new HomePageState();
