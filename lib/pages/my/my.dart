@@ -16,7 +16,7 @@ class MyPageState extends State<MyPage> {
       body: new Center(
         child: new RaisedButton(
           onPressed: () {
-            Navigator.of(context).pushNamed("login");
+            Navigator.of(context).pushNamed("login_register");
           },
           child: new Text("点我跳转"),
           color: Colors.blue,

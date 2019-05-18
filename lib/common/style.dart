@@ -16,7 +16,7 @@ class Constant{
 
   ///墨水瓶可用时使用的字体样式。
   static const availableStyle = TextStyle(
-    color: const Color(0xFF00CACE),
+    color: const Color(0xFFFB6463),
     fontSize: middleTextWhiteSize,
   );
 
@@ -34,4 +34,6 @@ class IconFont{
   IconFont.FONT_FAMILY);
 
   static const IconData LOGIN_PW = const IconData(0xe60e, fontFamily: IconFont.FONT_FAMILY);
+
+  static const IconData TEAM = const IconData(0xe63e, fontFamily: IconFont.FONT_FAMILY);
 }
