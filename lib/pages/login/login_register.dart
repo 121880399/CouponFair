@@ -1,5 +1,7 @@
+import 'package:coupon_fair/common/style.dart';
 import 'package:coupon_fair/pages/login/login.dart';
 import 'package:coupon_fair/pages/login/register.dart';
+import 'package:coupon_fair/utils/navigator_utils.dart';
 import 'package:flutter/material.dart';
 
 class LoginRegisterPage extends StatefulWidget {
@@ -58,7 +60,19 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
               child: new Column(
                 children: <Widget>[
                   new SizedBox(
-                    height: 75,
+                    height: 25,
+                  ),
+                 Container(
+                   alignment: Alignment.bottomLeft,
+                   child: IconButton(
+                     icon: Icon(Icons.close),
+                     onPressed: (){
+                       NavigatorUtils.finish(context);
+                     },
+                   ),
+                 ),
+                  new SizedBox(
+                    height: 25,
                   ),
                   /**
                    * 可以用SizeBox这种写法代替Padding：在Row或者Column中单独设置一个方向的间距的时候
@@ -71,10 +85,6 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                       children: <Widget>[
                         Expanded(
                             child: new Container(
-                          /**
-                               * TODO:暂时不会用Paint去自定义indicator，所以暂时只能这样实现了
-                               */
-
                           child: new Center(
                             child: new FlatButton(
                               onPressed: () {
@@ -84,7 +94,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                               },
                               child: _currentPage == 0 ?new Text(
                                 "登陆",
-                                style: TextStyle(fontSize: 16,
+                                style: TextStyle(fontSize: Constant.bigTextSize,
                                   color: Colors.white
                                 ),
                               ):new Text(
@@ -107,7 +117,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                               },
                               child:_currentPage == 1? new Text(
                                 "注册",
-                                style: TextStyle(fontSize: 16,
+                                style: TextStyle(fontSize: Constant.bigTextSize,
                                 color: Colors.white
                                 ),
                               ): new Text(
@@ -122,9 +132,13 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                       ],
                     ),
                   ),
+                  new SizedBox(
+                    height: 10,
+                  ),
                   new Expanded(
                     child: _pageView,
-                  )
+                  ),
+                  Padding(padding: EdgeInsets.all(80.0)),
                 ],
               )),
         ));

@@ -14,7 +14,9 @@ class InputWidget extends StatefulWidget {
 
   final TextEditingController controller;
 
-  InputWidget({Key key, this.hintText, this.iconData, this.onChanged, this.textStyle, this.controller, this.obscureText = false}) : super(key: key);
+  final TextInputType inputType;
+
+  InputWidget({Key key, this.hintText, this.iconData, this.onChanged, this.textStyle, this.controller, this.obscureText = false,this.inputType = TextInputType.text}) : super(key: key);
 
   @override
   _InputWidgetState createState() => new _InputWidgetState();
@@ -31,6 +33,7 @@ class _InputWidgetState extends State<InputWidget> {
       controller: widget.controller,
       onChanged: widget.onChanged,
       obscureText: widget.obscureText,
+      keyboardType: widget.inputType,
       decoration: new InputDecoration(
         hintText: widget.hintText,
         icon: widget.iconData == null ? null : new Icon(widget.iconData),

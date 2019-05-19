@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:coupon_fair/common/style.dart';
 import 'package:coupon_fair/widget/input_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class VerifyCodeWidget extends StatefulWidget {
   ///倒计时的秒数，默认为60秒
@@ -25,6 +26,7 @@ class VerifyCodeWidget extends StatefulWidget {
 
   final TextStyle textStyle;
 
+  final TextInputType inputType;
 
   VerifyCodeWidget(
       {this.countdown: 60,
@@ -33,9 +35,9 @@ class VerifyCodeWidget extends StatefulWidget {
       this.onChanged,
       this.controller,
       this.hintText,
-        this.iconData,
-        this.textStyle,
-      });
+      this.iconData,
+      this.textStyle,
+      this.inputType = TextInputType.number});
 
   @override
   _VerifyCodeWidgetState createState() => _VerifyCodeWidgetState();
@@ -95,36 +97,41 @@ class _VerifyCodeWidgetState extends State<VerifyCodeWidget> {
     return Stack(
       alignment: const Alignment(1.0, 0.0),
       children: <Widget>[
-         TextField(
+        TextField(
           controller: widget.controller,
           onChanged: widget.onChanged,
+          //只能输入数字
+          inputFormatters: <TextInputFormatter>[
+            WhitelistingTextInputFormatter.digitsOnly,
+          ],
+          keyboardType: widget.inputType,
           decoration: new InputDecoration(
             hintText: widget.hintText,
             icon: widget.iconData == null ? null : new Icon(widget.iconData),
           ),
         ),
-         widget.available
-             ? InkWell(
-           child: Text(
-             ' $_verifyStr ',
-             style: inkWellStyle,
-           ),
-           onTap: (_seconds == widget.countdown)
-               ? () {
-             _startTime();
-             inkWellStyle = Constant.unavailableStyle;
-             _verifyStr = "已发送$_seconds" + "s";
-             setState(() {});
-             widget.onTapCallback();
-           }
-               : null,
-         )
-             : InkWell(
-           child: Text(
-             " 获取验证码 ",
-             style: Constant.unavailableStyle,
-           ),
-         )
+        widget.available
+            ? InkWell(
+              child: Text(
+                ' $_verifyStr ',
+                style: inkWellStyle,
+              ),
+              onTap: (_seconds == widget.countdown)
+                  ? () {
+                      _startTime();
+                      inkWellStyle = Constant.unavailableStyle;
+                      _verifyStr = "已发送$_seconds" + "s";
+                      setState(() {});
+                      widget.onTapCallback();
+                    }
+                  : null,
+            )
+            : InkWell(
+              child: Text(
+                " 获取验证码 ",
+                style: Constant.unavailableStyle,
+              ),
+            )
       ],
     );
   }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 /**
- * 充满的button
- * Created by guoshuyu
- * Date: 2018-07-16
+ * 圆角BUtton
+ * Created by 周正一
+ * Date: 2019/5/19
  */
 class FlexButton extends StatelessWidget {
   final String text;
@@ -29,6 +29,9 @@ class FlexButton extends StatelessWidget {
         padding: new EdgeInsets.only(left: 20.0, top: 10.0, right: 20.0, bottom: 10.0),
         textColor: textColor,
         color: color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30))
+        ),
         child: new Flex(
           mainAxisAlignment: mainAxisAlignment,
           direction: Axis.horizontal,

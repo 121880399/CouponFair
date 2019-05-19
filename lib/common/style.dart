@@ -10,7 +10,7 @@ class Constant{
   static const minTextSize = 12.0;
 
   static const normalTextWhite = TextStyle(
-    color: Color(0xffffff),
+    color: Color(0xFFFFFFFF),
     fontSize: normalTextSize,
   );
 
