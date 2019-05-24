@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '券集',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primaryColor: Color(0xFFFB6463), accentColor: Color(0xFFFBB663)),
       home: MyHomePage(),
@@ -31,7 +32,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _MyHomePageState();
   }
 }
@@ -84,25 +84,43 @@ class _MyHomePageState extends State<MyHomePage>
         onPressed: () {
           setState(() {
             currentPage = 2;
+            controller.jumpToPage(currentPage);
           });
         },
         backgroundColor: Colors.white,
-        child: currentPage == 2
-            ? Image.asset(
+        child:Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Container(
+              height :20.0,
+              child:  currentPage == 2
+                  ? Image.asset(
                 share_selected,
                 height: 20.0,
                 width: 20.0,
               )
-            : Image.asset(
+                  : Image.asset(
                 share,
                 height: 20.0,
                 width: 20.0,
               ),
+            ),
+            Text("分享",
+                style: currentPage == 2
+                    ? TextStyle(
+                    color: Color(0xfff683a2),
+                    fontSize: Constant.minTextSize)
+                    : TextStyle(fontSize: Constant.minTextSize,color: Color
+                  (0xff3d3d3d))),
+          ],
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: Container(
         height: 60.0,
         child: BottomAppBar(
+
             shape: CircularNotchedRectangle(),
             child: Row(
               mainAxisSize: MainAxisSize.max,
@@ -111,118 +129,143 @@ class _MyHomePageState extends State<MyHomePage>
               children: <Widget>[
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          currentPage = 0;
-                        });
-                      },
-                      icon: currentPage == 0
-                          ? Image.asset(
-                              home_selected,
-                              height: 20.0,
-                              width: 20.0,
-                            )
-                          : Image.asset(
-                              home,
-                              height: 20.0,
-                              width: 20.0,
-                            ),
+                    Container(
+                      height:40.0,
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            currentPage = 0;
+                            controller.jumpToPage(currentPage);
+                          });
+                        },
+                        icon: currentPage == 0
+                            ? Image.asset(
+                                home_selected,
+                                height: 20.0,
+                                width: 20.0,
+                              )
+                            : Image.asset(
+                                home,
+                                height: 20.0,
+                                width: 20.0,
+                              ),
+                      ),
                     ),
                     Text("首页",
                         style: currentPage == 0
                             ? TextStyle(
                                 color: Color(0xfff683a2),
                                 fontSize: Constant.minTextSize)
-                            : TextStyle(fontSize: Constant.minTextSize)),
+                            : TextStyle(fontSize: Constant.minTextSize,color: Color
+                          (0xff3d3d3d))),
                   ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          currentPage = 1;
-                        });
-                      },
-                      icon: currentPage == 1
-                          ? Image.asset(
-                              category_selected,
-                              height: 20.0,
-                              width: 20.0,
-                            )
-                          : Image.asset(
-                              category,
-                              height: 20.0,
-                              width: 20.0,
-                            ),
+                    Container(
+                      height:40.0,
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            currentPage = 1;
+                            controller.jumpToPage(currentPage);
+                          });
+                        },
+                        icon: currentPage == 1
+                            ? Image.asset(
+                                category_selected,
+                                height: 20.0,
+                                width: 20.0,
+                              )
+                            : Image.asset(
+                                category,
+                                height: 20.0,
+                                width: 20.0,
+                              ),
+                      ),
                     ),
                     Text("分类",
                         style: currentPage == 1
                             ? TextStyle(
                                 color: Color(0xfff683a2),
                                 fontSize: Constant.minTextSize)
-                            : TextStyle(fontSize: Constant.minTextSize)),
+                            : TextStyle(fontSize: Constant.minTextSize,color: Color
+                          (0xff3d3d3d))),
                   ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          currentPage = 3;
-                        });
-                      },
-                      icon: currentPage == 3
-                          ? Image.asset(
-                              earnings_selected,
-                              height: 20.0,
-                              width: 20.0,
-                            )
-                          : Image.asset(
-                              earnings,
-                              height: 20.0,
-                              width: 20.0,
-                            ),
+                    Container(
+                      height:40.0,
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            currentPage = 3;
+                            controller.jumpToPage(currentPage);
+                          });
+                        },
+                        icon: currentPage == 3
+                            ? Image.asset(
+                                earnings_selected,
+                                height: 20.0,
+                                width: 20.0,
+                              )
+                            : Image.asset(
+                                earnings,
+                                height: 20.0,
+                                width: 20.0,
+                              ),
+                      ),
                     ),
                     Text("收益",
                         style: currentPage == 3
                             ? TextStyle(
                                 color: Color(0xfff683a2),
                                 fontSize: Constant.minTextSize)
-                            : TextStyle(fontSize: Constant.minTextSize)),
+                            : TextStyle(fontSize: Constant.minTextSize,color:
+                        Color
+                            (0xff3d3d3d))),
                   ],
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          currentPage = 4;
-                        });
-                      },
-                      icon: currentPage == 4
-                          ? Image.asset(
-                              my_selected,
-                              height: 20.0,
-                              width: 20.0,
-                            )
-                          : Image.asset(
-                              my,
-                              height: 20.0,
-                              width: 20.0,
-                            ),
+                    Container(
+                      height:40.0,
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            currentPage = 4;
+                            controller.jumpToPage(currentPage);
+                          });
+                        },
+                        icon: currentPage == 4
+                            ? Image.asset(
+                                my_selected,
+                                height: 20.0,
+                                width: 20.0,
+                              )
+                            : Image.asset(
+                                my,
+                                height: 20.0,
+                                width: 20.0,
+                              ),
+                      ),
                     ),
                     Text("我的",
                         style: currentPage == 4
                             ? TextStyle(
                                 color: Color(0xfff683a2),
                                 fontSize: Constant.minTextSize)
-                            : TextStyle(fontSize: Constant.minTextSize)),
+                            : TextStyle(fontSize: Constant.minTextSize,color: Color
+                          (0xff3d3d3d))),
                   ],
                 )
               ],
