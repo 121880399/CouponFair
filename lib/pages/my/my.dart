@@ -1,4 +1,6 @@
 import 'package:coupon_fair/common/style.dart';
+import 'package:coupon_fair/widget/animation_circle_progress.dart';
+import 'package:coupon_fair/widget/animation_text_progress.dart';
 import 'package:flutter/material.dart';
 
 class MyPage extends StatefulWidget {
@@ -235,13 +237,33 @@ class MyPageState extends State<MyPage> {
                 ),
               ],
             ),
+            SizedBox(
+              height: 10.0,
+            ),
             Card(
-              child: Column(
-                children: <Widget>[
-                    Text("还差2人升级到VIP会员",
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.only(top: 20.0,bottom: 20.0),
+                child: Column(
+                  children: <Widget>[
+                      Text("还差2人升级到VIP会员",
 
-                    )
-                ],
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                    Stack(
+                      alignment: Alignment.center,
+                        children: <Widget>[
+                          AnimationTextProgress(percentage: 90,style: TextStyle(
+                            fontSize: Constant.middleTextWhiteSize,
+                            color:Color(0xfff683a2)
+                          ),),
+                          AnimationCircleProgress(percentage :90,strokeWidth:8.0,circleColor: Color(0xffebebeb),progressColor: Color(0xfff683a2),)
+                        ],
+                    ),
+                  ],
+                ),
               ),
             )
           ],
